@@ -1,0 +1,28 @@
+{
+  "name": "auto-route",
+  "version": "1.0.0",
+  "description": "Provide automated route solution for SPAs based on react and vue.",
+  "main": "index.js",
+  "private": false,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/attacking/auto-route.git"
+  },
+  "keywords": [
+    "automated",
+    "spa",
+    "route"
+  ],
+  "author": "misuhom@163.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/attacking/auto-route/issues"
+  },
+  "homepage": "https://github.com/attacking/auto-route#readme",
+  "dependencies": {
+    "eslint": "^5.0.1"
+  }
+}
