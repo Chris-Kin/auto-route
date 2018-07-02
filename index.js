@@ -1,4 +1,3 @@
-
 export default function (requiredFiles, excludeRegExp, isForceLowercase = true) {
   if (typeof requiredFiles.keys !== 'function') {
     throw new Error('auto-route only accept function exported by require.context');

@@ -1,5 +1,5 @@
 {
-  "name": "auto-route",
+  "name": "spa-auto-route",
   "version": "1.0.0",
   "description": "Provide automated route solution for SPAs based on react and vue.",
   "main": "index.js",
