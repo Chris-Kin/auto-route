@@ -1,13 +1,25 @@
-import route from './src/route';
 
-/**
- * 
- * @param {traverse diractory} directory
- * @param {whether subdirectories should be searched } useSubdirectories
- * @param {match files} targetRegExp
- * @param {excluded files} excludeRegExp
- * @param {whether} isForceLowercase
- */
-export default function (directory, useSubdirectories = true, targetRegExp, excludeRegExp, isForceLowercase = true) {
+export default function (requiredFiles, excludeRegExp, isForceLowercase = true) {
+  if (typeof requiredFiles.keys !== 'function') {
+    throw new Error('auto-route only accept function exported by require.context');
+  }
 
+  const routes = [];
+  const keys = requiredFiles.keys();
+  keys.forEach(el => {
+    if (excludeRegExp.test(el)) {
+      return;
+    }
+    let path = el.slice(1, el.lastIndexOf('/'))
+    if (isForceLowercase) {
+      path = path.toLowerCase();
+    }
+    const name = path.replace(/\//g, '');
+    routes.push({
+      name,
+      path,
+      component: requiredFiles(el).default,
+    });
+  });
+  return routes;
 }
