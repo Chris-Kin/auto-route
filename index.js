@@ -18,7 +18,6 @@ export default function (requiredFiles, excludeRegExp) {
       });
     }
   });
-  console.log(allNestedRoutes, 8990);
   keys.forEach(el => {
     if (excludeRegExp.test(el)) {
       return;
@@ -31,12 +30,10 @@ export default function (requiredFiles, excludeRegExp) {
     if (nestedRoutes) {
       nestedRoutes.forEach(nestedRoute => {
         const nestedRouteFilePath = `${el.slice(1, el.lastIndexOf('/')).replace('/Home', '')}/${nestedRoute}`;
-        // console.log(keys, nestedRouteFilePath, 909);
         const key = keys.find(el => el.includes(nestedRouteFilePath));
         if (!key) {
           return;
         }
-        // console.log(el, nestedRoute, nestedRouteFilePath, key);
         children.push({
           path: nestedRoute.toLowerCase(),
           name: requiredFiles(key).default.name,
@@ -44,11 +41,9 @@ export default function (requiredFiles, excludeRegExp) {
         });
       });
     }
-    // console.log(path);
     if (allNestedRoutes.includes(path)) {
       return;
     }
-    // console.log(el, 88);
     routes.push({
       path: path,
       name: requiredFiles(el).default.name || name,
