@@ -44,12 +44,17 @@ export default function (requiredFiles, excludeRegExp) {
     if (allNestedRoutes.includes(path)) {
       return;
     }
-    routes.push({
+    const redirect = requiredFiles(el).default.redirect;
+    const route = {
       path: path,
       name: requiredFiles(el).default.name || name,
       component: requiredFiles(el).default,
       children,
-    });
+    };
+    if (redirect) {
+      route.redirect = redirect;
+    }
+    routes.push(route);
   });
   return routes;
 }
