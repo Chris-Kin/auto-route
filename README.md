@@ -36,6 +36,23 @@ export default {
   },
 }
 ```
+4. when use nestedRoutes, you can alse write a 'redirect' property
+```js
+export default {
+  nestedRoutes: [
+    // the string is child route folder name(case sensitive).
+    'childRoute1',
+    'childRoute2',
+  ],
+  redirect: 'path/to/fatherroute/childroute2'
+  name: 'AFatherRoute',
+  data() {
+    return {
+      ...
+    };
+  },
+}
+```
 
 ## Tips
 1. route'name is token from vue instance's name, please make sure that every vue component has a name;
