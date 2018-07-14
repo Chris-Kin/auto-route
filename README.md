@@ -20,7 +20,7 @@ autoRoute(requiredFiles, excludeRegExp, isForceLowercase)
 
 1. requiredFiles: must generate by [require.context](https://webpack.js.org/guides/dependency-management/#require-context)
 2. excludeRegExp: files path RegExp which you don't want to put into router
-3. If a route has nested routes, you should write them in vue instance:
+3. if a route has nested routes(multi-level nesting is supported), you should write them in vue instance:
 ```js
 export default {
   nestedRoutes: [
