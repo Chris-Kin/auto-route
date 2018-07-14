@@ -60,9 +60,6 @@ export default function (requiredFiles, excludeRegExp) {
       });
     }
 
-    // 处理嵌套路由的父级路径重定向
-    const redirect = requiredFiles(el).default.redirect;
-
     // 生成当前的路由
     const route = {
       path: path,
@@ -70,6 +67,8 @@ export default function (requiredFiles, excludeRegExp) {
       component: requiredFiles(el).default,
       children,
     };
+    // 处理嵌套路由的父级路径重定向
+    const redirect = requiredFiles(el).default.redirect;
     if (redirect) {
       route.redirect = redirect;
     }
@@ -77,7 +76,6 @@ export default function (requiredFiles, excludeRegExp) {
     // 判断当前路由是否已存在于routes中
     const currentRouteInRoutes = findExistRouteByName(routes, route.name);
     if (currentRouteInRoutes) {
-      console.log(currentRouteInRoutes, '已存在啦');
       currentRouteInRoutes.children = children;
       if (redirect) {
         currentRouteInRoutes.redirect = redirect;
@@ -85,7 +83,6 @@ export default function (requiredFiles, excludeRegExp) {
     } else {
       // 被嵌套的路由页面已存在于某个路由的children中，不再加入routes中
       if (allNestedRoutes.includes(path)) {
-        console.log(path, 9);
         return;
       }
       routes.push(route);
