@@ -1,6 +1,6 @@
 {
   "name": "spa-auto-route",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "Provide automated route solution for SPAs based on vuejs.",
   "main": "index.js",
   "private": false,
@@ -22,7 +22,7 @@
     "url": "https://github.com/attacking/auto-route/issues"
   },
   "homepage": "https://github.com/attacking/auto-route#readme",
-  "dependencies": {
+  "devDependencies": {
     "eslint": "^5.0.1"
   }
 }
