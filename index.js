@@ -55,6 +55,7 @@ export default function (requiredFiles, excludeRegExp) {
           path: nestedRoute.toLowerCase(),
           name: requiredFiles(key).default.name,
           component: requiredFiles(key).default,
+          children: [],
         });
       });
     }
@@ -73,12 +74,36 @@ export default function (requiredFiles, excludeRegExp) {
       route.redirect = redirect;
     }
 
-    // 被嵌套的路由页面已存在于某个路由的children中
-    if (allNestedRoutes.includes(path)) {
-      return;
+    // 判断当前路由是否已存在于routes中
+    const currentRouteInRoutes = findExistRouteByName(routes, route.name);
+    if (currentRouteInRoutes) {
+      console.log(currentRouteInRoutes, '已存在啦');
+      currentRouteInRoutes.children = children;
+      if (redirect) {
+        currentRouteInRoutes.redirect = redirect;
+      }
+    } else {
+      // 被嵌套的路由页面已存在于某个路由的children中，不再加入routes中
+      if (allNestedRoutes.includes(path)) {
+        console.log(path, 9);
+        return;
+      }
+      routes.push(route);
     }
-
-    routes.push(route);
   });
   return routes;
+}
+
+function findExistRouteByName(routes, name) {
+  var target = null;
+  for (var i = 0; i < routes.length; i++) {
+    if (routes[i].name === name) {
+      target = routes[i];
+      return target;
+    } else if (routes[i].children.length) {
+      target = findExistRouteByName(routes[i].children, name);
+      if (target) return target;
+    }
+  }
+  return target;
 }
