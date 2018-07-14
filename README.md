@@ -1,18 +1,21 @@
-# auto-route
+# spa-auto-route
 
 ## Usage
-1. import autoRoute from 'auto-route';
-2. const routes = autoRoute(require.context('@/view', true, /index\.vue$/), /\/component\//);
-3. put the routes into vue-router
-```js
-new Router({
-  mode: 'history',
-  base: ROUTER_PREFIX,
-  routes: [
-    ...routes,
-  ],
-});
-```
+1. import autoRoute from 'spa-auto-route';
+2. generate routes;
+    ```js
+    const routes = autoRoute(require.context('@/view', true, /index\.vue$/), /\/component\//);
+    ```
+3. put the routes into vue-router.
+    ```js
+    new Router({
+      mode: 'history',
+      base: ROUTER_PREFIX,
+      routes: [
+        ...routes,
+      ],
+    });
+    ```
 
 ## API
 
@@ -55,7 +58,7 @@ export default {
 ```
 
 ## Tips
-1. route'name is token from vue instance's name, please make sure that every vue component has a name;
+1. route'name is token from vue instance's name, please make sure that every vue component has a unique name;
 2. Route which nests other child routes should be plat with child routes, like this:
 ```js
 ├── config.js
