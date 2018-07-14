@@ -11,20 +11,6 @@ export default function (requiredFiles, excludeRegExp) {
     return pre.split('/').length - cur.split('/').length;
   });
 
-  // 搜集所有嵌套的子路由，以防止重复添加路由
-  const allNestedRoutes = [];
-  keys.forEach(el => {
-    const nestedRoutes = requiredFiles(el).default.nestedRoutes;
-    if (!Array.isArray(nestedRoutes)) {
-      return;
-    }
-    const fatherPath = el.slice(1, el.lastIndexOf('/'));
-    nestedRoutes.forEach(el => {
-      const nestedRoutePath = `${fatherPath}/${el}`;
-      allNestedRoutes.push(nestedRoutePath.toLowerCase());
-    });
-  });
-
   // 处理文件数组，生成routes
   keys.forEach(el => {
     // 排除指定目录
@@ -81,10 +67,6 @@ export default function (requiredFiles, excludeRegExp) {
         currentRouteInRoutes.redirect = redirect;
       }
     } else {
-      // 被嵌套的路由页面已存在于某个路由的children中，不再加入routes中
-      if (allNestedRoutes.includes(path)) {
-        return;
-      }
       routes.push(route);
     }
   });
