@@ -1,6 +1,6 @@
 {
   "name": "spa-auto-route",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Provide automated route solution for SPAs based on vuejs.",
   "main": "index.js",
   "private": false,

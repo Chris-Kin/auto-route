@@ -8,7 +8,7 @@ export default function (requiredFiles, excludeRegExp) {
 
   // 对文件数组按层深排序，保证父级容器早于嵌套路由被处理
   const keys = requiredFiles.keys().sort((pre, cur) => {
-    return pre.split('/').length - cur.split('/').length;
+    return pre.split('/').length - cur.split('/').length >= 0;
   });
 
   // 处理文件数组，生成routes
@@ -31,7 +31,7 @@ export default function (requiredFiles, excludeRegExp) {
     const nestedRoutes = requiredFiles(el).default.nestedRoutes;
     if (Array.isArray(nestedRoutes)) {
       nestedRoutes.forEach(nestedRoute => {
-        const nestedRouteFilePath = `${el.slice(1, el.lastIndexOf('/'))}/${nestedRoute}`;
+        const nestedRouteFilePath = `${el.slice(1, el.lastIndexOf('/'))}/${nestedRoute}/`;
         const key = keys.find(el => el.includes(nestedRouteFilePath));
         // 如果指定的嵌套路由在文件目录中不存在，则忽略
         if (!key) {
