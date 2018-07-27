@@ -8,7 +8,7 @@ export default function (requiredFiles, excludeRegExp) {
 
   // 对文件数组按层深排序，保证父级容器早于嵌套路由被处理
   const keys = requiredFiles.keys().sort((pre, cur) => {
-    return pre.split('/').length - cur.split('/').length >= 0;
+    return pre.split('/').length - cur.split('/').length;
   });
 
   // 处理文件数组，生成routes
