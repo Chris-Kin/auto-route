@@ -8,7 +8,8 @@ Legend：
 * 💀 : remove
 
 ## 1.0.5
-1. 🐞 sort the route
+1. 🐞 child route file found algorithm optimized
+2. 💄 perfect documentation
 
 ## 1.0.4
 1. 🐞 when some nested router start with same string, it can't be process rightly
