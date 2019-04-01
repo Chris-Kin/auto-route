@@ -64,6 +64,8 @@ export default function (requiredFiles, excludeRegExp) {
     const alias = requiredFiles(el).default.alias;
     if (alias) {
       route.alias = alias;
+      route.xxx = 'xxxx';
+      console.log(route);
     }
 
     // 处理meta
@@ -78,6 +80,12 @@ export default function (requiredFiles, excludeRegExp) {
       currentRouteInRoutes.children = children;
       if (redirect) {
         currentRouteInRoutes.redirect = redirect;
+      }
+      if (alias) {
+        currentRouteInRoutes.alias = alias;
+      }
+      if (meta) {
+        currentRouteInRoutes.meta = meta;
       }
     } else {
       routes.push(route);
