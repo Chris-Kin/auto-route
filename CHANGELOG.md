@@ -7,6 +7,9 @@ Legend：
 * 🐞  fix bug
 * 💀  remove
 
+## 1.1.1
+1. 🐞 fix alias & meta
+
 ## 1.1.0
 1. 💄 compile source file from es6 to es5
 2. 🚩 support route alias
