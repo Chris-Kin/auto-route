@@ -50,8 +50,43 @@
         'childRoute1',
         'childRoute2',
       ],
-      redirect: 'path/to/fatherroute/childroute2'
+      // you'd better use a component's name rather than a path, because path may be modified occasionally. And name is shorter than path!
+      redirect: {
+        name: 'AllotBillHome',
+      },
+      // or
+      // redirect: 'path/to/fatherroute/childroute2',
       name: 'AFatherRoute',
+      data() {
+        return {
+          ...
+        };
+      },
+    }
+    ```
+5. You can add a 'alias' property in component
+    ```js
+    export default {
+      name: 'ARoute',
+      alias: 'a/route/anthor/name',
+      // multiple aliases
+      alias: ['/xxx', 'yyy'],
+      data() {
+        return {
+          ...
+        };
+      },
+    }
+    ```
+6. You can add a 'routeMeta' in component, it's [meta property](https://router.vuejs.org/zh/guide/advanced/meta.html) in vue-router
+    ```js
+    export default {
+      name: 'ARoute',
+      alias: 'a/route/anthor/name',
+      // multiple aliases
+      routeMeta: {
+        requiresAuth: true,
+      },
       data() {
         return {
           ...

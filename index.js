@@ -53,10 +53,23 @@ export default function (requiredFiles, excludeRegExp) {
       component: requiredFiles(el).default,
       children,
     };
+
     // 处理嵌套路由的父级路径重定向
     const redirect = requiredFiles(el).default.redirect;
     if (redirect) {
       route.redirect = redirect;
+    }
+
+    // 处理路由别名
+    const alias = requiredFiles(el).default.alias;
+    if (alias) {
+      route.alias = alias;
+    }
+
+    // 处理meta
+    const meta = requiredFiles(el).default.routeMeta;
+    if (meta) {
+      route.meta = meta;
     }
 
     // 判断当前路由是否已存在于routes中

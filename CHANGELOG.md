@@ -2,10 +2,15 @@
 
 Legend：
 
-* 🚩 : new feature
-* 💄 : optimize feature
-* 🐞 : fix bug
-* 💀 : remove
+* 🚩  new feature
+* 💄  optimize feature
+* 🐞  fix bug
+* 💀  remove
+
+## 1.1.0
+1. 💄 compile source file from es6 to es5
+2. 🚩 support route alias
+2. 🚩 support route meta
 
 ## 1.0.5
 1. 🐞 child route file found algorithm optimized

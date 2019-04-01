@@ -2,10 +2,10 @@
   "name": "spa-auto-route",
   "version": "1.0.5",
   "description": "Provide automated route solution for SPAs based on vuejs.",
-  "main": "index.js",
+  "main": "dist/index.js",
   "private": false,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "webpack --config webpack.config.js --watch"
   },
   "repository": {
     "type": "git",
@@ -23,6 +23,11 @@
   },
   "homepage": "https://github.com/attacking/auto-route#readme",
   "devDependencies": {
-    "eslint": "^5.0.1"
+    "eslint": "^5.0.1",
+    "babel": "^6.23.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "webpack": "^4.27.1",
+    "webpack-cli": "^3.1.2"
   }
 }
